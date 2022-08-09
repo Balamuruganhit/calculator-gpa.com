@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Calculator</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+          * {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', open-sans;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background: #023d6d;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  width: 100%;
+}
+label{
+  position: relative;
+  top: 40px;
+}
+
+#results,
+#calculator {
+  margin: 2rem auto;
+  width: 40rem;
+  max-width: 90%;
+  border: 1px solid #023d6d;
+  border-radius: 10px;
+  padding: 1rem;
+  color: #023d6d;
+}
+
+#results {
+  text-align: center;
+}
+marquee{
+  font-size: 20px;
+  color:red;
+  margin-top: 20px;
+  position: relative;
+  margin-left:300px ;
+  margin-right: 300px;
+}
+
+#calculator input {
+  font: inherit;
+  position: relative;
+  font-size: 3rem;
+  border: 2px solid #023d6d;
+  width: 10rem;
+  padding: 0.15rem;
+  margin-left: 270px;
+  margin-right:270px;
+  display: block;
+  color: #023d6d;
+  text-align: center;
+}
+
+#calculator input:focus {
+  outline: none;
+}
+
+#calculator button {
+  font: inherit;
+  background: #023d6d;
+  color: white;
+  border: 1px solid #023d6d;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#calculator button:focus {
+  outline: none;
+}
+
+#calculator button:hover,
+#calculator button:active {
+  background: #084f88;
+  border-color: #084f88;
+}
+
+#calc-actions button {
+  width: 4rem;
+}
+
+#calc-actions {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+    </style>
+    <script src="assets/scripts/vendor.js" defer></script>
+    <script src="assets/scripts/app.js" defer></script>
+  </head>
+  
+  <body>
+    <header>
+      <h1>ACGCET GPA Calculator</h1>
+    </header>
+    <marquee>All Grade Given Should Be In LowerCase❕❕</marquee>
+    <section id="calculator">
+      <label>Enter Your English Grade:</label>
+      <input type="" id="input-number"  /><br>
+      <label>Enter Your Maths Grade:</label><br>
+      <input type="" id="input-number1" />
+      <label>Enter Your Physics Grade:</label><br>
+      <input type="" id="input-number2" />
+      <label>Enter Your BCME or BEEE Grade:</label><br>
+      <input type="" id="input-number3" />
+      <label>Enter Your Physics Lab Grade:</label><br>
+      <input type="" id="input-number4" />
+      <label>Enter Your EPLab Grade:</label><br>
+      <input type="" id="input-number5" />
+      <div id="calc-actions">
+       
+        <button type="button" id="btn-divide">Submit</button>
+      </div>
+    </section>
+    <section id="results">
+      
+      <h2>Your gpa: <span id="current-result"></span></h2>
+    </section>
+    <script>
+    const defaultResult = 0;
+      let currentResult = defaultResult;
+      let logEntries = [];
+
+
+
+// Generates and writes calculation log
+      function createAndWriteOutput(calcNumber) {
+      outputResult(calcNumber); // from vendor file
+    }
+
+
+
+
+  function A(a){
+    if("o"==a){
+      return 10;
+    } else if("a+"==a){
+           return 9;
+    } else if("a"==a){
+        return 8;
+    } else if("b+"==a){
+        return 7;
+    } else if("b"==a){
+      return 6;
+    } else if("c"==a){
+        return 5;
+     } 
+    };
+
+
+
+  function divide() {
+    const enteredNumber = A(usrInput.value);
+    const enteredNumber1= A(usrInput1.value);
+    console.log(enteredNumber);
+    console.log(usrInput1);
+    console.log(enteredNumber1);
+    const enteredNumber2 = A(usrInput2.value);
+    console.log(enteredNumber2);
+      const enteredNumber3 = A(usrInput3.value);
+    console.log(enteredNumber3);
+    const enteredNumber4 = A(usrInput4.value);
+   console.log(enteredNumber4);
+    const enteredNumber5 = A(usrInput5.value);
+    console.log(enteredNumber5);
+    let sum=enteredNumber *3 +enteredNumber1 *4 +enteredNumber2 *4 +enteredNumber3 *4 +enteredNumber4 *1.5
+    +enteredNumber *2;
+    console.log(sum);
+      let avg=sum/18.5;
+    let m=avg.toFixed(2);
+    console.log(m);
+    createAndWriteOutput(m);
+  
+    }
+
+
+    divideBtn.addEventListener('click', divide);
+    const usrInput = document.getElementById('input-number');
+    const usrInput1 = document.getElementById('input-number1');
+    const usrInput2 = document.getElementById('input-number2');
+    const usrInput3 = document.getElementById('input-number3');
+    const usrInput4 = document.getElementById('input-number4');
+    const usrInput5= document.getElementById('input-number5');
+    const addBtn = document.getElementById('btn-add');
+    const subtractBtn = document.getElementById('btn-subtract');
+    const multiplyBtn = document.getElementById('btn-multiply');
+    const divideBtn = document.getElementById('btn-divide');
+
+    const currentResultOutput = document.getElementById('current-result');
+    const currentCalculationOutput = document.getElementById('current-calculation');
+
+    function outputResult(result) {
+    currentResultOutput.textContent = result;
+  
+  }
+
+    </script>
+  </body>
+</html>
